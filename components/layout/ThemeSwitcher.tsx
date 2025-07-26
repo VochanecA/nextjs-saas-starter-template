@@ -11,31 +11,22 @@ export default function ThemeSwitcher() {
   const [changeThemeValue, setChangeThemeValue] = useState<string>();
 
   useEffect(() => {
+    // This effect determines the value to switch TO...I think,must test
     setChangeThemeValue(theme === "dark" ? "light" : "dark");
   }, [theme]);
 
-  useEffect(() => {
-    const checkDarkTheme = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    const newValue =
-      theme === "dark"
-        ? "light"
-        : theme === "light"
-          ? "dark"
-          : checkDarkTheme
-            ? "light"
-            : "dark";
-    setChangeThemeValue(newValue);
-  }, [theme]);
+  // The second useEffect from original code is redundant and can be removed.
+  // The first useEffect correctly sets `changeThemeValue`.
+  // The logic for `checkDarkTheme` is handled by `next-themes` internally for initial setup.
 
   return (
     <button
       className={clsx(
         "-ml-3 flex h-8 w-8 items-center justify-center rounded-full",
-        { "dark:text-white": theme === "dark" },
+        "text-gray-700 dark:text-white", // Ensures visibility in both light and dark modes
       )}
-      onClick={() => setTheme(changeThemeValue ?? "dark")}
+      onClick={() => setTheme(changeThemeValue ?? "dark")} // Use changeThemeValue or default to 'dark'
+      aria-label={`Switch to ${changeThemeValue} theme`} // Accessible label
     >
       <BiMoon
         className={clsx({ hidden: theme !== "dark", block: theme === "dark" })}

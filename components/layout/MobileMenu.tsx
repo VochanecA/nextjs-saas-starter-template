@@ -170,7 +170,7 @@ export default function MobileMenu({
                 onSignin={onSignin}
                 step="login"
                 appearance={{ style: "outline" }}
-                className="flex items-center justify-center gap-3 w-full py-2 px-4 border border-blue-300 text-blue-300 rounded-md hover:bg-blue-300 hover:text-gray-900 transition-colors dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900" // Adjusted button colors
+                className="flex items-center justify-center gap-3 w-full py-2 px-4 border border-blue-300 text-blue-900 rounded-md hover:bg-blue-300 hover:text-gray-900 transition-colors dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900" // Adjusted button colors
               >
                 <Suspense fallback={<div></div>}>
                   <GoSignIn size={20} />
