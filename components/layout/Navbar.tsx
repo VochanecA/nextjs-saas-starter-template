@@ -13,18 +13,11 @@ import getAuth from "@/auth";
 import { Dropdown, DropdownMenuItem } from "@/components/UI/Dropdown";
 import { BiChevronDown } from "react-icons/bi"; // Keep BiChevronDown if used directly in Navbar
 
-// REMOVE direct icon imports here:
-// import { MdOutlineDashboard } from "react-icons/md";
-// import { FaFeatherAlt, FaRocket, FaQuestionCircle, FaSignInAlt, FaMoneyBillAlt, FaDatabase } from "react-icons/fa";
-// import { type IconType } from "react-icons";
-
-// === IMPORTANT CHANGE HERE ===
 export type NavLinkItem = {
   label: string;
   href: string;
   iconName?: string; // Change from IconType to string
 };
-// =============================
 
 
 export async function Navbar() {
@@ -96,16 +89,17 @@ export async function Navbar() {
   ];
 
   return (
-    <div className="sticky top-0 z-10 w-full bg-white px-5 py-4 shadow-subtle dark:bg-gray-900 dark:text-white dark:shadow-gray-950 xl:px-10">
+    <div className="fixed top-0 z-[1000] w-full px-5 py-4 xl:px-10
+                    bg-white shadow-subtle dark:bg-gray-900 dark:text-white dark:shadow-gray-950"> {/* Reverted to original background and shadow */}
       <div className="mx-auto flex w-full max-w-[1200px] items-center justify-between">
         <div className="text-xl font-bold">
-          <Link href="/" className="flex items-center gap-3 font-extrabold">
+          <Link href="/" className="flex items-center gap-3 font-extrabold text-gray-900 dark:text-white"> {/* Adjusted text color */}
             <Logo />
             {appName}
           </Link>
         </div>
         <div className="ml-10 hidden flex-1 items-center justify-between md:flex">
-          <div className="flex items-center gap-7 text-gray-700">
+          <div className="flex items-center gap-7 text-gray-700 dark:text-gray-200"> {/* Adjusted text color */}
             {navLinkItems.map((item) => (
               <NavLink key={item.href} href={item.href}>
                 {item.label}
@@ -132,7 +126,7 @@ export async function Navbar() {
                 <SignInButton appearance={{ style: "outline", size: "md" }}>
                   Sign in
                 </SignInButton>
-                <SignInButton step={"register"} appearance={{ size: "md" }}>
+                <SignInButton step={"register"} appearance={{ style: "solid", size: "md" }}> {/* Ensure style is "solid" here for consistency */}
                   Sign up
                 </SignInButton>
               </>
@@ -140,7 +134,7 @@ export async function Navbar() {
 
             <a
               href="https://github.com/Reflow-HQ/nextjs-saas-starter-template"
-              className="text-3xl"
+              className="text-3xl text-gray-700 dark:text-gray-200" // Adjusted text color 
               target="_blank"
               rel="noopener noreferrer"
             >

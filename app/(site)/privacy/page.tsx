@@ -1,8 +1,18 @@
 import Container from "@/components/layout/Container";
 
-export default function PrivacyPage() {
+export default function PrivacyPolicyPage() { // Renamed from PrivacyPage for consistency
   return (
     <Container className="textual-page">
+      {/* Back button added here */}
+      <div className="mb-10 text-left">
+        <a
+          href="/"
+          className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          &larr; Back to home
+        </a>
+      </div>
+
       <div className="mx-auto mb-20 max-w-[500px] text-center">
         <h1 className="mb-7 text-4xl font-bold">Privacy policy</h1>
         <p className="text-xl leading-9">
@@ -31,9 +41,9 @@ export default function PrivacyPage() {
           information we may collect via the service includes:
         </p>
 
-        <ul>
+        <ul className="terms"> {/* Added 'terms' class for consistency */}
           <li>
-            Personally identifiable information, such as your name, shipping
+            <strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping
             address, email address, and telephone number, and demographic
             information, such as your age, gender, hometown, and interests, that
             you voluntarily give to us when you register with the service or
@@ -41,19 +51,34 @@ export default function PrivacyPage() {
             service, such as online chat and message boards.
           </li>
           <li>
-            Financial information, such as data related to your payment method
-            (e.g., valid credit card number, card brand, expiration date) that
-            we may collect when you purchase, order, return, exchange, or
-            request information about our services from the service.
+            <strong>Financial Data (via Paddle):</strong> For processing
+            payments, we use Paddle.com as our Merchant of Record. This means
+            Paddle handles your payment information directly. When you make a
+            purchase, Paddle collects your payment details (e.g., credit card
+            number, expiration date) and billing information (e.g., name,
+            address, email). We do not directly store or process your sensitive
+            payment card information on our servers. Paddle's collection and
+            processing of your data are governed by their own Privacy Policy,
+            which we encourage you to review:{" "}
+            <a
+              href="https://paddle.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline"
+            >
+              https://paddle.com/privacy
+            </a>
+            .
           </li>
           <li>
-            Information our servers automatically collect when you access the
-            App, such as your IP address, your browser type, your operating
+            <strong>Derivative Data:</strong> Information our servers
+            automatically collect when you access the App, such as your IP
+            address, your browser type, your operating
             system, your access times, and the pages you have viewed directly
             before and after accessing the service.
           </li>
           <li>
-            Device information, such as your mobile device ID, model, and
+            <strong>Device Data:</strong> Device information, such as your mobile device ID, model, and
             manufacturer, and information about the location of your device if
             you access the service from a mobile device.
           </li>
@@ -73,41 +98,34 @@ export default function PrivacyPage() {
           information collected about you via the service to:
         </p>
 
-        <ul>
+        <ul className="terms"> {/* Added 'terms' class for consistency */}
           <li>Create and manage your account.</li>
           <li>
             Process your transactions and send you related information,
-            including
+            including purchase confirmations and invoices.
           </li>
           <li>
-            purchase confirmations and invoices. Send you technical notices,
-          </li>
-          <li>
-            updates, security alerts, and support and administrative messages.
+            Send you technical notices, updates, security alerts, and support and administrative messages.
           </li>
           <li>
             Respond to your comments, questions, and requests and provide
-            customer
+            customer service.
           </li>
           <li>
-            service. Communicate with you about products, services, offers,
+            Communicate with you about products, services, offers,
+            promotions, rewards, and events offered by us and others.
           </li>
           <li>
-            promotions, rewards, and events offered by us and others. Monitor
-            and
-          </li>
-          <li>
-            analyze trends, usage, and activities in connection with our App.
+            Monitor and analyze trends, usage, and activities in connection with our App.
           </li>
           <li>
             Personalize and improve the service and provide advertisements,
-            content,
+            content, or features that match user profiles or interests.
           </li>
-          <li>or features that match user profiles or interests. Facilitate</li>
+          <li>Facilitate transactions and payments.</li>
           <li>
-            transactions and payments. Prevent fraudulent transactions, monitor
+            Prevent fraudulent transactions, monitor against theft, and protect against criminal activity.
           </li>
-          <li>against theft, and protect against criminal activity.</li>
         </ul>
       </div>
 
@@ -123,28 +141,28 @@ export default function PrivacyPage() {
           situations. Your information may be disclosed as follows:
         </p>
 
-        <ul>
+        <ul className="terms"> {/* Added 'terms' class for consistency */}
           <li>
-            If we believe the release of information about you is necessary to
+            <strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to
             respond to legal process, to investigate or remedy potential
             violations of our policies, or to protect the rights, property, and
             safety of others, we may share your information as permitted or
             required by any applicable law, rule, or regulation.
           </li>
           <li>
-            We may share or transfer your information in connection with, or
+            <strong>Business Transfers:</strong> We may share or transfer your information in connection with, or
             during negotiations of, any merger, sale of company assets,
             financing, or acquisition of all or a portion of our business to
             another company.
           </li>
           <li>
-            We may share your information with third parties that perform
-            services for us or on our behalf, including payment processing, data
+            <strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform
+            services for us or on our behalf, including payment processing (specifically Paddle), data
             analysis, email delivery, hosting services, customer service, and
             marketing assistance.
           </li>
           <li>
-            With your consent, or with an opportunity for you to withdraw
+            <strong>Marketing Communications:</strong> With your consent, or with an opportunity for you to withdraw
             consent, we may share your information with third parties for
             marketing purposes, as permitted by law.
           </li>

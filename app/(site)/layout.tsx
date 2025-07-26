@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-dvh flex-col">
       <Navbar />
       <main className="flex w-full grow flex-col items-center">{children}</main>
-      <Footer />
+
     </div>
   );
 }
