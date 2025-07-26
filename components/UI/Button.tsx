@@ -9,6 +9,7 @@ export interface ButtonProps {
   appearance?: ButtonStyleProps;
   disabled?: boolean;
   children: ReactNode;
+  className?: string; // Add className as an optional prop here
 }
 
 export interface ButtonStyleProps {
@@ -23,6 +24,7 @@ export function Button({
   appearance = {},
   disabled = false,
   children,
+  className, // Destructure className from props
 }: ButtonProps) {
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     onClick && onClick(e);
@@ -54,6 +56,7 @@ export function Button({
           "rounded-full px-6 py-2": appearance.size === "md",
           "rounded-lg px-2 py-1 text-xs": appearance.size === "sm",
         },
+        className // Apply the external className here
       )}
       type={type}
       disabled={disabled}

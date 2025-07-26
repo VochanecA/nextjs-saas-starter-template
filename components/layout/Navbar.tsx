@@ -1,20 +1,31 @@
+// components/layout/Navbar.tsx
+// This is a Server Component (no "use client")
 import Link from "next/link";
 import Logo from "@/components/UI/Logo";
-import { BsGithub } from "react-icons/bs";
+import { BsGithub } from "react-icons/bs"; // Keep BsGithub if used directly in Navbar
 import ThemeSwitcher from "@/components/layout/ThemeSwitcher";
 import SignInButton from "../auth/SignInButton";
 import UserDropdown from "@/components/auth/UserDropdown";
-import NavLink from "@/components/layout/NavLink";
+import NavLink from "@/components/layout/NavLink"; // This NavLink is for desktop, doesn't need icons here
 import MobileMenu from "@/components/layout/MobileMenu";
 import { appName } from "@/lib/app-config";
 import getAuth from "@/auth";
 import { Dropdown, DropdownMenuItem } from "@/components/UI/Dropdown";
-import { BiChevronDown } from "react-icons/bi";
+import { BiChevronDown } from "react-icons/bi"; // Keep BiChevronDown if used directly in Navbar
 
+// REMOVE direct icon imports here:
+// import { MdOutlineDashboard } from "react-icons/md";
+// import { FaFeatherAlt, FaRocket, FaQuestionCircle, FaSignInAlt, FaMoneyBillAlt, FaDatabase } from "react-icons/fa";
+// import { type IconType } from "react-icons";
+
+// === IMPORTANT CHANGE HERE ===
 export type NavLinkItem = {
   label: string;
   href: string;
+  iconName?: string; // Change from IconType to string
 };
+// =============================
+
 
 export async function Navbar() {
   const auth = getAuth();
@@ -25,14 +36,17 @@ export async function Navbar() {
     {
       label: "Features",
       href: "/#features",
+      iconName: "FaFeatherAlt", // Pass icon name as a string
     },
     {
       label: "Get Started",
       href: "/#get-started",
+      iconName: "FaRocket", // Pass icon name as a string
     },
     {
       label: "FAQ",
       href: "/#faq",
+      iconName: "FaQuestionCircle", // Pass icon name as a string
     },
   ];
 
@@ -59,10 +73,26 @@ export async function Navbar() {
 
   const mobileMenuLinkItems: NavLinkItem[] = [
     ...navLinkItems,
-    ...(navDropdownLink.items as NavLinkItem[]).map((item) => ({
-      ...item,
-      label: `${item.label} Demo`,
-    })),
+    ...(navDropdownLink.items as NavLinkItem[]).map((item) => {
+      let iconNameComponent: string | undefined; // Change to string
+      switch (item.href) {
+        case "/signin":
+          iconNameComponent = "FaSignInAlt"; // Pass icon name as a string
+          break;
+        case "/pricing":
+          iconNameComponent = "FaMoneyBillAlt"; // Pass icon name as a string
+          break;
+        case "/database":
+          iconNameComponent = "FaDatabase"; // Pass icon name as a string
+          break;
+      }
+
+      return {
+        ...item,
+        label: `${item.label} Demo`,
+        iconName: iconNameComponent, // Assign the determined icon name
+      };
+    }),
   ];
 
   return (
@@ -112,6 +142,7 @@ export async function Navbar() {
               href="https://github.com/Reflow-HQ/nextjs-saas-starter-template"
               className="text-3xl"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <BsGithub />
             </a>
